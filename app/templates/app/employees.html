@@ -1,0 +1,127 @@
+{% extends "app/base.html" %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h3 class="mt-4 text-center">Employees</h3>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div style="width:50%;" class="input-group">
+        <input id="searchBox" type="text" class="form-control"
+        placeholder="Search Employees">
+        <button class="btn btn-outline-secondary" type="button" id="searchEmployee">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="float-end">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#addEmployeeModal">
+          <i class="fas fa-plus"></i>
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="searchOutput">
+    <table id="employeeTable" class="table table-bordered">
+      <thead class="table-secondary">
+        <tr>
+          <th>Emp Code</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Sex</th>
+          <th>Department</th>
+          <th>Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td>{{ employee.emp_id }}</td>
+          <td>{{ employee.first_name }}</td>
+          <td>{{ employee.last_name }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.sex }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.designation }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add Employee Modal -->
+  <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLable"
+   aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+              <input style="width:100%;" name="emp_id" type="text"
+              class="form-control mb-2" placeholder="Employee ID" required>
+
+              <input style="width:100%;" name="first_name" type="text"
+              class="form-control mb-2" placeholder="First Name" required>
+
+              <input style="width:100%;" name="last_name" type="text"
+              class="form-control mb-2" placeholder="Last Name" required>
+
+              <input style="width:100%;" name="age" type="text"
+              class="form-control mb-2" placeholder="Age" required>
+
+              <input style="width:100%;" name="sex" type="text"
+              class="form-control mb-2" placeholder="Sex" required>
+
+              <input style="width:100%;" name="department" type="text"
+              class="form-control mb-2" placeholder="Department" required>
+
+              <input style="width:100%;" name="designation" type="text"
+              class="form-control" placeholder="Designation" required>
+            </div>
+
+            <button class="btn btn-primary" type="submit" name="button">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JS Function to Search Employee -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on("click","#searchEmployee",function() {
+      var searchTerm = $("#searchBox").val();
+
+      $.ajax({
+          type: "POST",
+          url: "{% url 'app:search_employees' %}",
+          data: {'searchTerm':searchTerm},
+          success: function(response){
+            $('#searchOutput').html(response);
+          }
+      });
+
+    });
+  });
+</script>
+
+{% endblock %}

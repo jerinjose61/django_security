@@ -1,0 +1,26 @@
+<table id="employeeTable" class="table table-bordered">
+  <thead class="table-secondary">
+    <tr>
+      <th>Emp Code</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Department</th>
+      <th>Designation</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for employee in employees %}
+    <tr>
+      <td>{{ employee.emp_id }}</td>
+      <td>{{ employee.first_name }}</td>
+      <td>{{ employee.last_name }}</td>
+      <td>{{ employee.age }}</td>
+      <td>{{ employee.sex }}</td>
+      <td>{{ employee.department }}</td>
+      <td>{{ employee.designation }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
