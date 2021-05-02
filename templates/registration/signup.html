@@ -1,0 +1,26 @@
+{% extends "registration/base.html" %}
+
+{% block head %}
+<title>Sign Up</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h3 class="text-center mt-4">Sign Up</h3>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form method="POST">
+        {% csrf_token %}
+        {% include "bs5_form.html" with form=form %}
+
+        <div class="mt-3">
+          <button class="btn btn-primary" type="submit" name="button">Sign Up</button>
+          <a class="btn btn-secondary" href="{% url 'app:index' %}">Cancel</a>
+        </div>
+      <form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+{% endblock %}

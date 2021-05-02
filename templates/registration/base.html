@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+    crossorigin="anonymous">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous">
+
+    <!-- Google Fonts - Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
+
+    <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/select/1.3.3/css/select.bootstrap5.min.css">
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <style>
+      /* To remove the down arrow by the right of the user avatar in the navbar */
+      .dropdown-toggle::after {
+        content: none;
+      }
+    </style>
+
+    {% block head %}
+
+    {% endblock %}
+
+  </head>
+  <body>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous">
+    </script>
+
+    <!-- jQuery for Data Tables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous">
+    </script>
+
+    <!-- JS for Data Tables -->
+    <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js">
+    </script>
+
+    <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js">
+    </script>
+
+    <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js">
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'app:index' %}">djSecurity</a>
+
+      </div>
+    </nav>
+
+    {% block body %}
+
+    {% endblock %}
+
+  </body>
+</html>

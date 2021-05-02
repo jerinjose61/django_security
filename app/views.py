@@ -6,8 +6,27 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.db import connection
 import subprocess, shlex
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
+
+def index(request):
+    return render(request, "app/index.html")
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, "New user created! Please sign in.")
+            return redirect('app:index')
+    else:
+        form = UserCreationForm()
+
+    return render(request, "registration/signup.html", {"form":form})
 
 def home(request):
     return render(request, "app/home.html")
