@@ -69,7 +69,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'app:home' %}">djSecurity</a>
+        <a class="navbar-brand" href="{% url 'app:index' %}">djSecurity</a>
 
       </div>
     </nav>
@@ -90,7 +90,7 @@
         <div class="card-body text-center">
           <h1>Welcome!</h1>
           <a class="btn btn-secondary" href="{% url 'signup' %}">Sign Up</a>
-          <a class="btn btn-primary" href="#">Sign In</a>
+          <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
         </div>
       </div>
     </div>

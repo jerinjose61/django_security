@@ -1,2 +1,3 @@
 app/__pycache__/
 django_security/__pycache__/
+app/migrations/__pycache__/
