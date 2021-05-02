@@ -8,6 +8,7 @@ from django.db import connection
 import subprocess, shlex
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -28,9 +29,11 @@ def signup(request):
 
     return render(request, "registration/signup.html", {"form":form})
 
+@login_required
 def home(request):
     return render(request, "app/home.html")
 
+@login_required
 def employees(request):
     if request.method == "POST":
         emp_id = request.POST.get("emp_id")
@@ -62,6 +65,7 @@ def employees(request):
         return render(request, 'app/employees.html',
         {"employees":employees})
 
+@login_required
 @csrf_exempt
 def search_employees(request):
     if request.is_ajax():
@@ -88,6 +92,7 @@ def search_employees(request):
 
         return HttpResponse(html)
 
+@login_required
 def dns_lookup(request):
     if request.method == "POST":
         domain_name = request.POST.get("domain_name")
