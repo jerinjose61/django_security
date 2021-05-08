@@ -138,9 +138,9 @@ LOGIN_REDIRECT_URL = 'app:home'
 LOGOUT_REDIRECT_URL = 'app:index'
 LOGIN_URL = "login"
 
-EMAIL_HOST = "smtp-relay.sendinblue.com"
+EMAIL_HOST = "<smtp-server>"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "jerinjose61@gmail.com"
-EMAIL_HOST_PASSWORD = 'SfbkZIzDrL2RaOhc'
+EMAIL_HOST_USER = "<username>"
+EMAIL_HOST_PASSWORD = '<password>'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "jerinjose61@gmail.com"
+DEFAULT_FROM_EMAIL = "<test@test.com>"
