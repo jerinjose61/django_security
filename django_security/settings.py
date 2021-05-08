@@ -137,3 +137,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'app:home'
 LOGOUT_REDIRECT_URL = 'app:index'
 LOGIN_URL = "login"
+
+EMAIL_HOST = "smtp-relay.sendinblue.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "jerinjose61@gmail.com"
+EMAIL_HOST_PASSWORD = 'SfbkZIzDrL2RaOhc'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "jerinjose61@gmail.com"
