@@ -124,6 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'app.validators.ConsecutivelyDecreasingAlphabetValidator'
     },
+    # {
+    #     'NAME': 'app.validators.RepeatingAndSequentialValidator'
+    # }
 ]
 
 
